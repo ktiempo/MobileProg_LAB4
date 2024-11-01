@@ -4,10 +4,14 @@ import { AntDesign, Ionicons, Octicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { FontAwesome5 } from '@expo/vector-icons'; 
 
-const UserProfile = () => {
+const UserProfile = ({ navigation }) => {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
+
+  const handleSignOut = () => {
+    navigation.navigate('LogIn');
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: isDarkMode ? '#121212' : '#fff', padding: 0 }}>
@@ -23,7 +27,7 @@ const UserProfile = () => {
           source={require('../assets/cha.png')}
           style={[
             styles.profileImage,
-            { borderColor: isDarkMode ? '#000' : '#fff' } // Change border color based on dark mode
+            { borderColor: isDarkMode ? '#000' : '#fff' }
           ]}
         />
       </View>
@@ -42,26 +46,20 @@ const UserProfile = () => {
       {/* Bio Section */}
       <View style={styles.bioSection}>
         <Text style={[styles.bioLabel, { color: isDarkMode ? '#fff' : '#000' }]}>Bio:</Text>
-        <Text style={[styles.bioText, { color: isDarkMode ? '#fff' : '#000' }]}>siya parin sa 2024</Text>
+        <Text style={[styles.bioText, { color: isDarkMode ? '#fff' : '#000' }]}>dili na magpaka tanga</Text>
       </View>
 
       {/* Social Media Section */}
       <View style={styles.detailsSection}>
         <Text style={[styles.detailsTitle, { color: isDarkMode ? '#fff' : '#000' }]}>Social Media Accounts</Text>
-
-        {/* Instagram */}
         <View style={styles.detailsContent}>
           <AntDesign name="instagram" size={24} color={isDarkMode ? '#fff' : '#000'} />
           <Text style={{ color: '#1e90ff', fontWeight: 'bold' }}> eyitsmecha</Text>
         </View>
-
-        {/* Twitter */}
         <View style={styles.detailsContent}>
           <Entypo name="twitter" size={24} color={isDarkMode ? '#fff' : '#000'} />
           <Text style={{ color: isDarkMode ? '#1e90ff' : '#1e90ff', fontWeight: 'bold' }}> luvavocuddle</Text>
         </View>
-
-        {/* TikTok */}
         <View style={styles.detailsContent}>
           <FontAwesome5 name="tiktok" size={24} color={isDarkMode ? '#fff' : '#000'} />
           <Text style={{ color: isDarkMode ? '#1e90ff' : '#1e90ff', fontWeight: 'bold' }}> rorror_rorurboat</Text>
@@ -110,10 +108,10 @@ const UserProfile = () => {
         </View>
       </View>
 
-      {/* Sign Out Button */}
-      <TouchableOpacity style={styles.signOutButton}>
+      <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
         <Text style={styles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -132,7 +130,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    borderWidth: 3, // The border width remains the same
+    borderWidth: 3,
   },
   profileDetails: {
     alignItems: 'center',
@@ -216,7 +214,7 @@ const styles = StyleSheet.create({
   },
   signOutText: {
     fontSize: 16,
-    color: 'red',  // Change the text color to red
+    color: 'red',
   },
 });
 
