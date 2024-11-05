@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text, TextInput, Button } from 'react-native-paper';
 
 const PasswordRecovery = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -12,23 +13,31 @@ const PasswordRecovery = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Password Recovery</Text>
+      <Text variant="headlineLarge" style={styles.title}>Password Recovery</Text>
 
       <Text style={styles.instructions}>
         Enter your email address to receive a password recovery link.
       </Text>
 
       <TextInput
-        style={styles.input}
-        placeholder="Email"
-        placeholderTextColor="#999"
+        label="Email"
+        mode="outlined"
         value={email}
         onChangeText={setEmail}
+        style={styles.input}
+        placeholderTextColor="#999"
+        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
-      <TouchableOpacity style={styles.sendButton} onPress={handlePasswordRecovery}>
-        <Text style={styles.sendButtonText}>Send Recovery Link</Text>
-      </TouchableOpacity>
+      <Button
+        mode="contained"
+        onPress={handlePasswordRecovery}
+        style={styles.sendButton}
+        labelStyle={styles.sendButtonText}
+        contentStyle={{ paddingVertical: 8 }}
+      >
+        Send Recovery Link
+      </Button>
     </View>
   );
 };
@@ -54,25 +63,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    borderRadius: 25,
     marginBottom: 15,
     backgroundColor: '#fff',
-    color: '#333',
-    borderColor: '#ddd',
-    borderWidth: 1,
   },
   sendButton: {
     backgroundColor: '#4a90e2',
-    paddingVertical: 15,
     borderRadius: 25,
-    alignItems: 'center',
+    marginVertical: 10,
   },
   sendButtonText: {
     color: '#fff',
     fontWeight: '600',
-    fontSize: 16,
   },
 });
 

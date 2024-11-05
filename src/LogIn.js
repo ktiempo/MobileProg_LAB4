@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
+import { Text, TextInput, Button, TouchableRipple, IconButton } from 'react-native-paper';
 
 const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -20,51 +21,63 @@ const LogIn = ({ navigation }) => {
         style={styles.logo}
       />
 
-      <Text style={styles.title}>Welcome Back!</Text>
+      <Text variant="headlineLarge" style={styles.title}>Welcome Back!</Text>
 
       <TextInput
-        style={styles.input}
-        placeholder="Mobile number or email"
-        placeholderTextColor="#999"
+        label="Mobile number or email"
+        mode="outlined"
         value={email}
         onChangeText={setEmail}
+        style={styles.input}
+        placeholderTextColor="#999"
+        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor="#999"
+        label="Password"
+        mode="outlined"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
+        style={styles.input}
+        placeholderTextColor="#999"
+        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
-      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-        <Text style={styles.loginButtonText}>Log In</Text>
-      </TouchableOpacity>
+      <Button
+        mode="contained"
+        onPress={handleLogin}
+        style={styles.loginButton}
+        labelStyle={styles.loginButtonText}
+        contentStyle={{ paddingVertical: 8 }}
+      >
+        Log In
+      </Button>
 
-      <TouchableOpacity onPress={() => navigation.navigate('PasswordRecovery')}>
+      <TouchableRipple onPress={() => navigation.navigate('PasswordRecovery')}>
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-      </TouchableOpacity>
+      </TouchableRipple>
 
-      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
+      <TouchableRipple onPress={handleRegister}>
         <Text style={styles.registerButtonText}>New Here? Register</Text>
-      </TouchableOpacity>
+      </TouchableRipple>
 
       <View style={styles.socialLoginContainer}>
         <Text style={styles.socialLoginText}>Or Login With</Text>
-        <TouchableOpacity>
-          <Image
-            source={require('../assets/google_logo.png')}
-            style={styles.socialIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            source={require('../assets/facebook_logo.png')}
-            style={styles.socialIcon}
-          />
-        </TouchableOpacity>
+        <IconButton
+          icon={({ size, color }) => (
+            <Image source={require('../assets/google_logo.png')} style={{ width: size, height: size }} />
+          )}
+          size={28}
+          onPress={() => {}}
+        />
+        <IconButton
+          icon={({ size, color }) => (
+            <Image source={require('../assets/facebook_logo.png')} style={{ width: size, height: size }} />
+          )}
+          size={28}
+          onPress={() => {}}
+        />
       </View>
     </View>
   );
@@ -84,47 +97,34 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontSize: 28,
-    fontWeight: '600',
     textAlign: 'center',
     marginBottom: 20,
     color: '#333',
   },
   input: {
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    borderRadius: 25, // Rounded corners for input
     marginBottom: 15,
     backgroundColor: '#fff',
-    color: '#333',
-    borderColor: '#ddd',
-    borderWidth: 1,
   },
   loginButton: {
     backgroundColor: '#4a90e2',
-    paddingVertical: 15,
     borderRadius: 25,
-    alignItems: 'center',
-    marginBottom: 10,
+    marginVertical: 10,
   },
   loginButtonText: {
     color: '#fff',
     fontWeight: '600',
-    fontSize: 16,
   },
   forgotPasswordText: {
     color: '#4a90e2',
     textAlign: 'center',
     marginBottom: 20,
   },
-  registerButton: {
-    alignItems: 'center',
-    marginTop: 10,
-  },
   registerButtonText: {
     color: '#4a90e2',
     fontSize: 16,
     fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 10,
   },
   socialLoginContainer: {
     flexDirection: 'row',
@@ -136,11 +136,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginRight: 10,
     color: '#333',
-  },
-  socialIcon: {
-    width: 28,
-    height: 28,
-    marginHorizontal: 10,
   },
 });
 
