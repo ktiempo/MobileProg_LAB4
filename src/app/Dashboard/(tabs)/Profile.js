@@ -1,27 +1,24 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Switch, ScrollView } from 'react-native';
 import { AntDesign, Ionicons, Entypo, FontAwesome5 } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 const Profile = () => {
-  const router = useRouter();
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   const toggleSwitch = () => setIsDarkMode((prevState) => !prevState);
 
-  const handleSignOut = () => {
-    router.replace('/'); // Redirect to the index page
-  };
-
   return (
-    <View style={[styles.container, { backgroundColor: isDarkMode ? '#121212' : '#fff' }]}>
+    <ScrollView
+      style={[styles.container, { backgroundColor: isDarkMode ? '#121212' : '#fff' }]}
+    >
       {/* Cover Photo */}
-      <Image source={require('../../../assets/cha1.png')} style={styles.coverPhoto} />
+      <Image source={require('../../../../assets/cha1.png')} style={styles.coverPhoto} />
 
       {/* Profile Info */}
       <View style={styles.profileContainer}>
         <Image
-          source={require('../../../assets/cha1.png')}
+          source={require('../../../../assets/cha1.png')}
           style={[
             styles.profileImage,
             { borderColor: isDarkMode ? '#000' : '#fff' },
@@ -101,7 +98,9 @@ const Profile = () => {
 
       {/* Settings Section */}
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: isDarkMode ? '#fff' : '#000' }]}>Settings</Text>
+        <Text style={[styles.sectionTitle, { color: isDarkMode ? '#fff' : '#000' }]}>
+          Settings
+        </Text>
         <View style={styles.optionContainer}>
           <Text style={[styles.optionText, { color: isDarkMode ? '#fff' : '#000' }]}>
             Dark Mode
@@ -109,12 +108,7 @@ const Profile = () => {
           <Switch value={isDarkMode} onValueChange={toggleSwitch} />
         </View>
       </View>
-
-      {/* Sign Out Button */}
-      <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
-        <Text style={styles.signOutText}>Sign Out</Text>
-      </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -212,14 +206,6 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 16,
-  },
-  signOutButton: {
-    marginTop: 20,
-    alignItems: 'center',
-  },
-  signOutText: {
-    fontSize: 16,
-    color: 'red',
   },
 });
 
