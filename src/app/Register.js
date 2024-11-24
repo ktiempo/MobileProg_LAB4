@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Text, TextInput, Button, TouchableRipple } from 'react-native-paper';
+import { useRouter } from 'expo-router';
 
-const Register = ({ navigation }) => {
+const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
@@ -10,9 +11,12 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const router = useRouter();
+
   const handleRegister = () => {
-    // Registration logic
-    navigation.navigate('UserProfile');
+    // Registration logic here
+    Alert.alert("User Registration Successful", "Please login"); // Show the alert message
+    router.replace('/'); // Replace the stack with the root layout
   };
 
   return (
@@ -25,8 +29,6 @@ const Register = ({ navigation }) => {
         value={firstName}
         onChangeText={setFirstName}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <TextInput
@@ -35,8 +37,6 @@ const Register = ({ navigation }) => {
         value={lastName}
         onChangeText={setLastName}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <TextInput
@@ -45,8 +45,6 @@ const Register = ({ navigation }) => {
         value={username}
         onChangeText={setUsername}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <TextInput
@@ -55,8 +53,6 @@ const Register = ({ navigation }) => {
         value={email}
         onChangeText={setEmail}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <TextInput
@@ -66,8 +62,6 @@ const Register = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <TextInput
@@ -77,8 +71,6 @@ const Register = ({ navigation }) => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
 
       <Button
@@ -91,7 +83,7 @@ const Register = ({ navigation }) => {
         Register
       </Button>
 
-      <TouchableRipple onPress={() => navigation.goBack()}>
+      <TouchableRipple onPress={() => router.push('/')}>
         <Text style={styles.loginText}>Already have an account? Log In</Text>
       </TouchableRipple>
     </View>

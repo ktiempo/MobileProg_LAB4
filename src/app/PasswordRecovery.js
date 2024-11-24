@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Text, TextInput, Button } from 'react-native-paper';
+import { useRouter } from 'expo-router';
 
-const PasswordRecovery = ({ navigation }) => {
+const PasswordRecovery = () => {
   const [email, setEmail] = useState('');
+  const router = useRouter();
 
   const handlePasswordRecovery = () => {
-    // Password recovery logic here
-    alert('Password recovery link sent to your email!');
-    navigation.goBack(); // Go back to the previous screen after sending the recovery link
+    if (!email) {
+      Alert.alert('Error', 'Please enter your email address.');
+      return;
+    }
+
+    // Simulate sending the recovery link
+    Alert.alert('Success', 'Password recovery link sent!', [
+      {
+        text: 'OK',
+        onPress: () => router.push('/'), // Navigate back to the index (login) screen
+      },
+    ]);
   };
 
   return (
     <View style={styles.container}>
       <Text variant="headlineLarge" style={styles.title}>Password Recovery</Text>
-
       <Text style={styles.instructions}>
-        Enter your email address to receive a password recovery link.
+        Enter your email to receive a password recovery link.
       </Text>
-
       <TextInput
         label="Email"
         mode="outlined"
@@ -26,15 +35,11 @@ const PasswordRecovery = ({ navigation }) => {
         onChangeText={setEmail}
         style={styles.input}
         placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
-
       <Button
         mode="contained"
         onPress={handlePasswordRecovery}
         style={styles.sendButton}
-        labelStyle={styles.sendButtonText}
-        contentStyle={{ paddingVertical: 8 }}
       >
         Send Recovery Link
       </Button>

@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { Text, TextInput, Button, TouchableRipple, IconButton } from 'react-native-paper';
+import { useRouter } from 'expo-router';
 
-const LogIn = ({ navigation }) => {
+const LogIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const handleLogin = () => {
-    navigation.navigate('UserProfile');
+    router.replace('Dashboard'); // Replace the current route with the Dashboard
   };
 
   const handleRegister = () => {
-    navigation.navigate('Register');
+    router.push('Register'); // Navigate to the Register screen
   };
 
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/login_logo.png')}
+        source={require('../../assets/login_logo.png')}
         style={styles.logo}
       />
-
       <Text variant="headlineLarge" style={styles.title}>Welcome Back!</Text>
-
       <TextInput
         label="Mobile number or email"
         mode="outlined"
         value={email}
         onChangeText={setEmail}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
-
       <TextInput
         label="Password"
         mode="outlined"
@@ -40,24 +37,17 @@ const LogIn = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
         style={styles.input}
-        placeholderTextColor="#999"
-        theme={{ colors: { placeholder: '#999', text: '#333' } }}
       />
-
       <Button
         mode="contained"
         onPress={handleLogin}
         style={styles.loginButton}
-        labelStyle={styles.loginButtonText}
-        contentStyle={{ paddingVertical: 8 }}
       >
         Log In
       </Button>
-
-      <TouchableRipple onPress={() => navigation.navigate('PasswordRecovery')}>
+      <TouchableRipple onPress={() => router.push('PasswordRecovery')}>
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </TouchableRipple>
-
       <TouchableRipple onPress={handleRegister}>
         <Text style={styles.registerButtonText}>New Here? Register</Text>
       </TouchableRipple>
@@ -66,14 +56,14 @@ const LogIn = ({ navigation }) => {
         <Text style={styles.socialLoginText}>Or Login With</Text>
         <IconButton
           icon={({ size, color }) => (
-            <Image source={require('../assets/google_logo.png')} style={{ width: size, height: size }} />
+            <Image source={require('../../assets/google_logo.png')} style={{ width: size, height: size }} />
           )}
           size={28}
           onPress={() => {}}
         />
         <IconButton
           icon={({ size, color }) => (
-            <Image source={require('../assets/facebook_logo.png')} style={{ width: size, height: size }} />
+            <Image source={require('../../assets/facebook_logo.png')} style={{ width: size, height: size }} />
           )}
           size={28}
           onPress={() => {}}
