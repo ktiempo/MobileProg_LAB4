@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons'; 
 
 const Settings = () => {
-  const router = useRouter(); 
+  const router = useRouter(); // Router to manage navigation
 
   const handleLogout = () => {
     Alert.alert("Log Out", "Are you sure you want to log out?", [
@@ -13,7 +13,7 @@ const Settings = () => {
         text: "Log Out",
         onPress: () => {
           console.log("User logged out");
-          router.replace('/'); 
+          router.replace('/'); // Navigate to the login screen
         },
       },
     ]);

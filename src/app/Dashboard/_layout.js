@@ -12,12 +12,12 @@ export default function DrawerLayout() {
           drawerStyle: styles.drawerStyle,
           drawerContentOptions: {
             activeTintColor: '#ffffff',
-            activeBackgroundColor: '#1877F2', 
+            activeBackgroundColor: '#28a745', // Changed to green
             inactiveTintColor: '#333333',
             labelStyle: styles.labelStyle,
           },
           headerStyle: {
-            backgroundColor: '#1877F2', 
+            backgroundColor: '#28a745', // Changed to green
             shadowColor: 'transparent',
           },
           headerTintColor: '#ffffff',

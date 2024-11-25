@@ -13,48 +13,46 @@ const Profile = () => {
       style={[styles.container, { backgroundColor: isDarkMode ? '#121212' : '#fff' }]}
     >
       {/* Cover Photo */}
-      <Image source={require('../../../../assets/cha1.png')} style={styles.coverPhoto} />
+      <Image source={require('../../../../assets/header.jpg')} style={styles.coverPhoto} />
 
       {/* Profile Info */}
       <View style={styles.profileContainer}>
         <Image
-          source={require('../../../../assets/cha1.png')}
+          source={require('../../../../assets/prof.png')}
           style={[
             styles.profileImage,
             { borderColor: isDarkMode ? '#000' : '#fff' },
           ]}
         />
       </View>
-      <View style={styles.profileDetails}>
-        <Text style={[styles.name, { color: isDarkMode ? '#fff' : '#000' }]}>
-          Charlene R. Lusterio
-        </Text>
-        <Text style={[styles.subText, { color: isDarkMode ? '#b0b0b0' : 'gray' }]}>
-          1.5k friends
-        </Text>
-      </View>
+          <View style={styles.profileDetails}>
+      <Text style={[styles.name, { color: isDarkMode ? '#fff' : '#000' }]}>
+        Krysel Tiempo
+      </Text>
+      <Text style={[styles.subText, { color: isDarkMode ? '#b0b0b0' : 'gray' }]}>
+        2.0k friends
+      </Text>
+
+      {/* Bio Section */}
+      <Text style={[styles.bioText, { color: isDarkMode ? '#fff' : '#000', marginTop: 5 }]}>
+        ukiyo
+      </Text>
+    </View>
+
 
       {/* Edit Profile Button */}
       <TouchableOpacity style={styles.editProfileButton}>
         <Text style={styles.editProfileText}>Edit profile</Text>
       </TouchableOpacity>
 
-      {/* Bio */}
-      <View style={styles.bioSection}>
-        <Text style={[styles.bioLabel, { color: isDarkMode ? '#fff' : '#000' }]}>Bio:</Text>
-        <Text style={[styles.bioText, { color: isDarkMode ? '#fff' : '#000' }]}>
-          dili na magpaka tanga
-        </Text>
-      </View>
-
       {/* Social Media Section */}
       <View style={styles.detailsSection}>
         <Text style={[styles.detailsTitle, { color: isDarkMode ? '#fff' : '#000' }]}>
           Social Media Accounts
         </Text>
-        {[{ name: 'instagram', account: 'eyitsmecha', icon: AntDesign },
-          { name: 'twitter', account: 'luvavocuddle', icon: Entypo },
-          { name: 'tiktok', account: 'rorror_rorurboat', icon: FontAwesome5 },
+        {[{ name: 'instagram', account: 'prin.teth', icon: AntDesign },
+          { name: 'twitter', account: 'Pringles', icon: Entypo },
+          { name: 'tiktok', account: 'sageehhhh0', icon: FontAwesome5 },
         ].map(({ name, account, icon: Icon }, idx) => (
           <View key={idx} style={styles.detailsContent}>
             <Icon name={name} size={24} color={isDarkMode ? '#fff' : '#000'} />
@@ -70,8 +68,8 @@ const Profile = () => {
         <Text style={[styles.detailsTitle, { color: isDarkMode ? '#fff' : '#000' }]}>
           Contact Info
         </Text>
-        {[{ name: 'call', value: '+63 9979617157' },
-          { name: 'mail', value: 'charleneelusterio@gmail.com' },
+        {[{ name: 'call', value: '+63 9051427482' },
+          { name: 'mail', value: 'tiempo.kryselapril@gmail.com' },
         ].map(({ name, value }, idx) => (
           <View key={idx} style={styles.detailsContent}>
             <Ionicons name={name} size={24} color={isDarkMode ? '#fff' : '#000'} />
@@ -86,7 +84,7 @@ const Profile = () => {
           Basic Info
         </Text>
         {[{ name: 'person', value: 'Female' },
-          { name: 'calendar', value: 'June 4, 2004' },
+          { name: 'calendar', value: 'April 2, 2004' },
           { name: 'pricetags', value: 'Pronouns: she/they' },
         ].map(({ name, value }, idx) => (
           <View key={idx} style={styles.detailsContent}>
@@ -111,6 +109,7 @@ const Profile = () => {
     </ScrollView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -145,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   editProfileButton: {
-    backgroundColor: '#e7e7e7',
+    backgroundColor: '#28a745',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   editProfileText: {
-    color: '#000',
+    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
