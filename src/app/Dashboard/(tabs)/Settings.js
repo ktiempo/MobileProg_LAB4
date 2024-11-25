@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router'; // Import useRouter for navigation
-import { Ionicons } from '@expo/vector-icons'; // For icons
+import { useRouter } from 'expo-router'; 
+import { Ionicons } from '@expo/vector-icons'; 
 
 const Settings = () => {
-  const router = useRouter(); // Get the router object for navigation
+  const router = useRouter(); 
 
   const handleLogout = () => {
     Alert.alert("Log Out", "Are you sure you want to log out?", [
@@ -13,7 +13,7 @@ const Settings = () => {
         text: "Log Out",
         onPress: () => {
           console.log("User logged out");
-          router.replace('/'); // Navigate to the root layout or desired page
+          router.replace('/'); 
         },
       },
     ]);
@@ -84,15 +84,15 @@ const styles = StyleSheet.create({
   logoutButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#EAEAEA', // Light gray background for the logout button
+    backgroundColor: '#EAEAEA', 
     paddingVertical: 10,
-    borderRadius: 10, // Rounded corners to match the "Edit profile" style
-    width: '80%', // Take most of the screen width
+    borderRadius: 10, 
+    width: '80%', 
   },
   logoutText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#333', // Dark text color for the light gray background
+    color: '#333', 
   },
 });
 

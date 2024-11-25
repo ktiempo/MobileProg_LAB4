@@ -8,7 +8,6 @@ const Layout = () => {
         headerShown: false, // Hide headers globally
       }}
     >
-      {/* Define index as the main screen */}
       <Stack.Screen name="index" options={{ title: 'Login' }} />
       <Stack.Screen name="Register" options={{ title: 'Register' }} />
       <Stack.Screen name="UserProfile" options={{ title: 'User Profile' }} />

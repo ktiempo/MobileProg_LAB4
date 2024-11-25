@@ -14,9 +14,9 @@ const Register = () => {
   const router = useRouter();
 
   const handleRegister = () => {
-    // Registration logic here
-    Alert.alert("User Registration Successful", "Please login"); // Show the alert message
-    router.replace('/'); // Replace the stack with the root layout
+
+    Alert.alert("User Registration Successful", "Please login"); 
+    router.replace('/'); 
   };
 
   return (

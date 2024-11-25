@@ -9,11 +9,11 @@ const LogIn = () => {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.replace('Dashboard'); // Replace the current route with the Dashboard
+    router.replace('Dashboard'); 
   };
 
   const handleRegister = () => {
-    router.push('Register'); // Navigate to the Register screen
+    router.push('Register'); 
   };
 
   return (

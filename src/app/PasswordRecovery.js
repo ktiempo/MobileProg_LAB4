@@ -13,11 +13,11 @@ const PasswordRecovery = () => {
       return;
     }
 
-    // Simulate sending the recovery link
+   
     Alert.alert('Success', 'Password recovery link sent!', [
       {
         text: 'OK',
-        onPress: () => router.push('/'), // Navigate back to the index (login) screen
+        onPress: () => router.push('/'), 
       },
     ]);
   };
